@@ -21,7 +21,8 @@ func back(konici []int, ground []int, spaces []int) (police []int) { // vrací p
 		} else if konici[spaces[0]-1] == kun || konici[spaces[0]+1] == kun { // mezera uprostřed
 			continue
 		} // kolem všech mezer jsou jiné barvy, zkus vrátit poníka
-		next := konici[:]
+		next := make([]int, len(konici))
+		copy(next, konici)
 		next[spaces[0]] = kun
 		ground[i], ground[0] = ground[0], ground[i]
 		police = back(next, ground[1:], spaces[1:])
